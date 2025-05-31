@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Daviasales%26oq%3Daviasales%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOdIBCDQ4MTlqMGoyqAIAsAIB%26sourceid%3Dchrome%26ie%3DUTF-8%26sei%3DkCAzaMCUDcGp9u8PnMev-Qo&q=EgRftBxYGJDBzMEGIjDBalviGzr6GhBp94du8dHF0yQnLm9ayS-NuY5De6uuw_zztgGpYGXjgAgYRYGuCUgyAVJaAUM');
+  await page.locator('iframe[name="a-z51keqd751an"]').contentFrame().getByRole('checkbox', { name: 'I\'m not a robot' }).click();
+  await page.locator('iframe[name="c-z51keqd751an"]').contentFrame().locator('.rc-imageselect-tile').first().click();
+  await page.locator('iframe[name="c-z51keqd751an"]').contentFrame().locator('tr:nth-child(3) > td').first().click();
+  await page.locator('iframe[name="c-z51keqd751an"]').contentFrame().locator('tr:nth-child(3) > td:nth-child(2)').click();
+  await page.locator('iframe[name="c-z51keqd751an"]').contentFrame().getByRole('button', { name: 'Verify' }).click();
+  await page.getByRole('link', { name: 'Find Deals on Flights at' }).click();
+  await page.goto('https://www.aviasales.com/?params=INI1');
+  await page.locator('[data-test-id="origin-input"]').click();
+  await page.locator('[data-test-id="origin-input"]').fill('new york');
+  await page.getByText('John F. Kennedy International').click();
+  await page.locator('[data-test-id="destination-input"]').fill('germany');
+  await page.getByText('BER', { exact: true }).click();
+  await page.locator('[data-test-id="start-date-field"]').click();
+  await page.locator('[data-test-id="tooltip-wrapper"] [data-test-id="button"]').click();
+  await page.locator('[data-test-id="tooltip-wrapper"] [data-test-id="button"]').click();
+  await page.locator('[data-test-id="date-30\\.08\\.2025"]').click();
+  await page.locator('[data-test-id="passengers-field"]').click();
+  await page.locator('[data-test-id="number-of-adults"] [data-test-id="increase-button"]').click();
+  await page.locator('[data-test-id="end-date-field"]').click();
+  await page.locator('[data-test-id="calendar-action-button"]').click();
+  const page1Promise = page.waitForEvent('popup');
+  await page.locator('[data-test-id="form-submit"]').click();
+  const page1 = await page1Promise;
+  await page1.goto('https://www.aviasales.com/search/JFK3008BER2?origin_airports=0');
+  await page1.locator('[data-test-id="origin-input"]').click();
+  await page1.locator('[data-test-id="destination-input"]').click();
+  await page1.locator('[data-test-id="start-date-field"]').click();
+  await page1.locator('[data-test-id="end-date-field"]').click();
+  await page1.locator('[data-test-id="passengers-field"]').click();
+  await page1.locator('[data-test-id="number-of-adults"] [data-test-id="passenger-number"]').click();
+});

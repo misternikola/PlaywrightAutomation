@@ -1,0 +1,12 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="17.508878">
+<testsuite name="pomtest.spec.js" timestamp="2025-05-29T10:05:51.776Z" hostname="chromium" tests="1" failures="0" skipped="0" time="14.339" errors="0">
+<testcase name="test" classname="pomtest.spec.js" time="14.339">
+<system-out>
+<![CDATA[Nexus 6
+
+[[ATTACHMENT|test-results\pomtest-test-chromium\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
